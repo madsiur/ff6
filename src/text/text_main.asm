@@ -34,8 +34,6 @@ inc_lang "text/genju_attack_name_%s.inc"
 inc_lang "text/genju_bonus_desc_%s.inc"
 inc_lang "text/genju_bonus_name_%s.inc"
 inc_lang "text/genju_name_%s.inc"
-inc_lang "text/item_desc_%s.inc"
-inc_lang "text/item_name_%s.inc"
 inc_lang "text/item_type_name_%s.inc"
 inc_lang "text/lore_desc_%s.inc"
 inc_lang "text/magic_desc_%s.inc"
@@ -46,6 +44,10 @@ inc_lang "text/monster_name_%s.inc"
 inc_lang "text/monster_special_name_%s.inc"
 inc_lang "text/rare_item_desc_%s.inc"
 inc_lang "text/rare_item_name_%s.inc"
+inc_lang "text/item_name_%s.inc"
+inc_lang "text/item_name_gba_%s.inc"
+inc_lang "text/item_desc_%s.inc"
+inc_lang "text/item_desc_gba_%s.inc"
 
 ; ------------------------------------------------------------------------------
 
@@ -256,14 +258,6 @@ ItemTypeName:
 
 ; ------------------------------------------------------------------------------
 
-.segment "item_name"
-
-; d2/b300
-ItemName:
-        incbin_lang "item_name_%s.dat"
-
-; ------------------------------------------------------------------------------
-
 .segment "magic_desc"
 
 ; d8/c9a0
@@ -338,14 +332,7 @@ DanceName:
 
 ; ------------------------------------------------------------------------------
 
-.segment "item_lore_desc"
-
-; ed/6400
-begin_fixed_block ItemDesc, $13a0
-        incbin_lang "item_desc_%s.dat"
-end_fixed_block ItemDesc
-
-; ------------------------------------------------------------------------------
+.segment "lore_desc"
 
 ; ed/77a0
 begin_fixed_block LoreDesc, $02d0
@@ -360,12 +347,6 @@ LoreDescPtrs:
 
 ; ------------------------------------------------------------------------------
 
-; ed/7aa0
-ItemDescPtrs:
-        make_ptr_tbl_rel ItemDesc, ITEM_DESC_ARRAY_LENGTH
-
-; ------------------------------------------------------------------------------
-
 .segment "genju_bonus_desc"
 
 ; ed/fe00
@@ -376,5 +357,30 @@ end_fixed_block GenjuBonusDesc
 ; ed/ffd0
 GenjuBonusDescPtrs:
         make_ptr_tbl_rel GenjuBonusDesc, GENJU_BONUS_DESC_ARRAY_LENGTH
+
+; ------------------------------------------------------------------------------
+
+.segment "item_name"
+
+; bank f0
+ItemName:
+        incbin_lang "item_name_%s.dat"
+ItemNameGBA:
+        incbin_lang "item_name_gba_%s.dat"
+
+; ------------------------------------------------------------------------------
+
+.segment "item_desc"
+
+; bank f0
+ItemDesc:
+        incbin_lang "item_desc_%s.dat"
+ItemDescGBA:
+        incbin_lang "item_desc_gba_%s.dat"
+
+ItemDescPtrs:
+        make_ptr_tbl_rel ItemDesc, ITEM_DESC_ARRAY_LENGTH
+ItemDescGBAPtrs:
+        make_ptr_tbl_rel ItemDescGBA, ITEM_DESC_GBA_ARRAY_LENGTH, ItemDesc
 
 ; ------------------------------------------------------------------------------

@@ -12,7 +12,9 @@
 ; +----------------------------------------------------------------------------+
 
 inc_lang "text/item_desc_%s.inc"
+inc_lang "text/item_desc_gba_%s.inc"
 inc_lang "text/item_name_%s.inc"
+inc_lang "text/item_name_gba_%s.inc"
 inc_lang "text/item_type_name_%s.inc"
 inc_lang "text/rare_item_desc_%s.inc"
 inc_lang "text/rare_item_name_%s.inc"
@@ -2618,9 +2620,11 @@ ItemBlankQtyText:
 .pushseg
 .segment "item_prop"
 
-; d8/5000
+; f0/0000
 ItemProp:
         .incbin "item_prop.dat"
+ItemPropGBA:
+        .incbin "item_prop_gba.dat"
 
 .popseg
 

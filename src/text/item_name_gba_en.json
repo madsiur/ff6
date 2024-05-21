@@ -1,0 +1,28 @@
+{
+    "asset_label": "ItemNameGBA",
+    "asset_const": "ITEM_NAME_GBA",
+    "inc_path": "include/text/item_name_gba_en.inc",
+    "item_size": 13,
+    "char_tables": [
+      "text_en",
+      "fixed_length_en",
+      "small_symbols_en"
+    ],
+    "text": [
+      "{sword}Apocalypse",
+      "{dagger}Zwill Blade",
+      "{katana}Zanmato",
+      "{dagger}Oborozuki",
+      "{spear}Longinus",
+      "{claw}Godhand",
+      "{sword}Save Queen",
+      "{staff}Stardust Rod",
+      "{brush}Angel Brush",
+      "{card}Final Trump",
+      "{spear}Gungnir",
+      "{helm}Dueling Mask",
+      "{special}ScorpionTail",
+      "{relic}Bone Wrist",
+      "{sword}Excalipoor"
+    ]
+  }

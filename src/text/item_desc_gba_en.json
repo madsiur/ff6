@@ -1,0 +1,27 @@
+{
+  "asset_label": "ItemDescGBA",
+  "asset_const": "ITEM_DESC_GBA",
+  "inc_path": "include/text/item_desc_gba_en.inc",
+  "char_tables": [
+    "big_symbols_en",
+    "null_terminated_en",
+    "text_en"
+  ],
+  "text": [
+    "Mighty blade forged in a bygone age.",
+    "Twin-bladed dagger sought by a legendary adventurer.",
+    "Legendary katana tempered in the depths of the earth.",
+    "Ninja blade that shines silver like the moon.",
+    "Legendary spear said to hold sway over the world.",
+    "Legendary fighting knuckles imbued with holy might.",
+    "Treasured sword of a renowned general.",
+    "Legendary rod tipped with a swirling orb of stardust.",
+    "Mysterious brush made from an angel's quill.",
+    "Legendary gambler's lucky deck.",
+    "Legendary lance of the gods.",
+    "Fearsome battle mask that arouses one's fighting spirit.",
+    "Flail shaped like a stinger and enchanted with Bio.",
+    "Carved bone wristband that grants yetis great power.",
+    "Legendary holy sword...?"
+  ]
+}
