@@ -403,6 +403,7 @@ LoadWindowGfx:
 ; ------------------------------------------------------------------------------
 
 ; [ load window graphics for save slot 1 ]
+; [ sram expansion ]
 
 LoadSaveSlot1WindowGfx:
 @3aa1:  ldy     #$7a00
@@ -420,13 +421,14 @@ LoadSaveSlot1WindowGfx:
 ; ------------------------------------------------------------------------------
 
 ; [ load window graphics for save slot 2 ]
+; [ sram expansion ]
 
 LoadSaveSlot2WindowGfx:
 @3abd:  ldy     #$7c00
         sty     $14
         ldy     $93
         beq     @3acc
-        lda     $30714e
+        lda     $31674e         ; $30714e before
         bra     @3acd
 @3acc:  clr_a
 @3acd:  jsr     InitTfrWindowGfx
@@ -437,13 +439,14 @@ LoadSaveSlot2WindowGfx:
 ; ------------------------------------------------------------------------------
 
 ; [ load window graphics for save slot 3 ]
+; [ sram expansion ]
 
 LoadSaveSlot3WindowGfx:
 @3ad9:  ldy     #$7e00
         sty     $14
         ldy     $95
         beq     @3ae8
-        lda     $307b4e
+        lda     $32674e         ; $307b4e before
         bra     @3ae9
 @3ae8:  clr_a
 @3ae9:  jsr     InitTfrWindowGfx
@@ -454,6 +457,7 @@ LoadSaveSlot3WindowGfx:
 ; ------------------------------------------------------------------------------
 
 ; [ load save slot 1 window palette ]
+; [ sram expansion ]
 
 LoadSaveSlot1WindowPal:
 @3af5:  ldy     $91
@@ -468,11 +472,12 @@ LoadSaveSlot1WindowPal:
 ; ------------------------------------------------------------------------------
 
 ; [ load save slot 2 window palette ]
+; [ sram expansion ]
 
 LoadSaveSlot2WindowPal:
 @3b09:  ldy     $93
         beq     @3b13
-        lda     $30714e
+        lda     $31674e         ; $30714e before
         bra     @3b14
 @3b13:  clr_a
 @3b14:  ldx     #$0020
@@ -482,11 +487,12 @@ LoadSaveSlot2WindowPal:
 ; ------------------------------------------------------------------------------
 
 ; [ load save slot 3 window palette ]
+; [ sram expansion ]
 
 LoadSaveSlot3WindowPal:
 @3b1d:  ldy     $95
         beq     @3b27
-        lda     $307b4e
+        lda     $32674e         ; $307b4e before
         bra     @3b28
 @3b27:  clr_a
 @3b28:  ldx     $00

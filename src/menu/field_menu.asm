@@ -435,6 +435,7 @@ MenuState_15:
 ; ------------------------------------------------------------------------------
 
 ; [ menu state $20: restore game (init) ]
+; [ sram expansion ]
 
 MenuState_20:
 @1d03:  jsr     DisableInterrupts
@@ -459,7 +460,7 @@ MenuState_20:
         bne     @1d36       ; branch if slot 2 is valid
         ldy     $95
         beq     @1d3c       ; branch if slot 3 is not valid
-@1d36:  lda     $307ff0     ; most recently saved slot
+@1d36:  lda     $337f00     ; most recently saved slot, $307ff0 before
         sta     $4e         ; set current position
 @1d3c:  jsr     InitGameLoadCursor
         jsr     CreateCursorTask

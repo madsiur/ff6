@@ -3,17 +3,18 @@
 ; ------------------------------------------------------------------------------
 
 ; [ check if sram is valid ]
+; [ sram expansion ]
 
 CheckSRAM:
 @7023:  longa
         lda     #$e41b                  ; fixed value
-        cmp     $307ff8
+        cmp     $337f08                 ; $307ff8 before
         beq     @7047
-        cmp     $307ffa
+        cmp     $337f0a                 ; $307ffa before
         beq     @7047
-        cmp     $307ffc
+        cmp     $337f0c                 ; $307ffc before
         beq     @7047
-        cmp     $307ffe
+        cmp     $337f0e                 ; $307ffe before
         beq     @7047
         shorta
         jsr     ClearSRAM
@@ -26,22 +27,19 @@ CheckSRAM:
 ; ------------------------------------------------------------------------------
 
 ; [ clear sram ]
+; [ sram expansion ]
 
 ClearSRAM:
-@704b:  phb
-        lda     #$30
-        pha
-        plb
-        ldx     #0
-        longa
-@7055:  stz     $6000,x                 ; clear 30/6000-30/7fff
+@704b:  longa
+        clr_ax
+@loop:  sta     $306000,x
+        sta     $316000,x
+        sta     $326000,x
+;        sta    $336000,x
         inx2
-        stz     $6000,x
-        inx2
-        cpx     #$2000
-        bne     @7055
+        cpx #$2000
+        bne @loop
         shorta
-        plb
         rts
 
 ; ------------------------------------------------------------------------------
@@ -64,14 +62,15 @@ ResetMenuCursorMemory:
 ; ------------------------------------------------------------------------------
 
 ; [ make sram valid ]
+; [ sram expansion ]
 
 ValidateSRAM:
 @7083:  longa
         lda     #$e41b                  ; set fixed value
-        sta     $307ff8
-        sta     $307ffa
-        sta     $307ffc
-        sta     $307ffe
+        sta     $337f08
+        sta     $337f0a
+        sta     $337f0c
+        sta     $337f0e
         shorta
         rts
 

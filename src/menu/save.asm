@@ -34,12 +34,12 @@ LoadSavedGame:
 ; ------------------------------------------------------------------------------
 
 ; [ save game ]
-
+; [ sram expansion ]
 ; a = game slot
 
 CopyGameDataToSRAM:
 @151d:  and     #$03        ; set game slot
-        sta     $307ff0
+        sta     $337f00     ; previously $307ff0
         sta     $0224
         pha
         ldy     $021b       ; save game time
@@ -52,46 +52,59 @@ CopyGameDataToSRAM:
         sty     $1ffe       ; save checksum
         clr_a
         pla
-        asl
-        tax
+        clc
+        adc     #$2f
+        sta     $e2
         longa
-        lda     f:SRAMSlotPtrs,x
-        tax
+        lda     #$6000
+        sta     $e0
+        clr_axy
+@srm_a: lda     $1600,x
+        sta     [$e0],y
+        inx2
+        iny2
+        cpx     #$0a00
+        bne     @srm_a
+        clr_ax
+@srm_b: lda     $336000,x
+        sta     [$e0],y
+        inx2
+        iny2
+        cpx     #$1600
+        bne     @srm_b
         shorta
-        ldy     $00
-@154d:  lda     $1600,y     ; copy saved game data to sram
-        sta     $306000,x
-        inx
-        iny
-        cpy     #$0a00
-        bne     @154d
         jmp     ValidateSRAM
-
-; pointers to saved game data in sram
-SRAMSlotPtrs:
-@155e:  .word   $0000,$0000,$0a00,$1400
 
 ; ------------------------------------------------------------------------------
 
 ; [ load saved game data ]
+; [ sram expansion ]
 
 LoadSaveSlot:
 @1566:  xba
         lda     $00
         xba
-        asl
-        tax
+        clc
+        adc     #$2f
+        sta     $e2
         longa
-        lda     f:SRAMSlotPtrs,x   ; pointer to saved game data
-        tax
+        lda     #$6000
+        sta     $e0
+        clr_axy
+@srm_a: lda     [$e0],y
+        sta     $1600,x
+        inx2
+        iny2
+        cpx     #$0a00
+        bne     @srm_a
+        clr_ax
+@srm_b: lda     [$e0],y
+        sta     $336000,x
+        inx2
+        iny2
+        cpx     #$1600
+        bne     @srm_b
         shorta
-        ldy     $00
-@1577:  lda     $306000,x
-        sta     $1600,y
-        inx
-        iny
-        cpy     #$0a00
-        bne     @1577
         rts
 
 ; ------------------------------------------------------------------------------

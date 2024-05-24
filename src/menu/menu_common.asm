@@ -221,11 +221,12 @@ FinalBattleOrderMenu:
 ; ------------------------------------------------------------------------------
 
 ; [ menu type $02: restore game ]
+; [ sram expansion ]
 
 GameLoadMenu:
-@016f:  lda     $307ff1                 ; increment random number seed
+@016f:  lda     $337f01                 ; increment random number seed (previously $307ff1)
         inc
-        sta     $307ff1
+        sta     $337f01
         jsl     InitCtrl
         jsr     CheckSRAM
         bcc     @019f                   ; branch if sram is invalid
