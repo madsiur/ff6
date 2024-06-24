@@ -111,6 +111,8 @@ PartyCharAnim_00:
         .addr   PartyCharSprite_00
         .byte   $ff
 
+; alternate animation is used for jumping characters on the shop screen
+; (see ShopCharSpriteTask_01 in src/menu/shop.asm)
 PartyCharAltAnim_00:
 @e94e:  .addr   PartyCharSprite_00
         .byte   $10
@@ -565,79 +567,81 @@ ShopCharYTbl:
 
 ; shop equip symbol animation data
 
+ShopEquipIconAnim:
+
 ; "E" (already equipped)
-ShopEquipIconAnim_00:
-@ebcd:  .addr   ShopEquipIconSprite_00
+ShopEquipIconAnim1:
+@ebcd:  .addr   ShopEquipIconSprite1
         .byte   $08
-        .addr   ShopEquipIconSprite_00
+        .addr   ShopEquipIconSprite1
         .byte   $08
-        .addr   ShopEquipIconSprite_00
+        .addr   ShopEquipIconSprite1
         .byte   $08
-        .addr   ShopEquipIconSprite_00
+        .addr   ShopEquipIconSprite1
         .byte   $ff
 
 ; up arrow (better)
-ShopEquipIconAnim_01:
-@ebd9:  .addr   ShopEquipIconSprite_04
+ShopEquipIconAnim2:
+@ebd9:  .addr   ShopEquipIconSprite5
         .byte   $08
-        .addr   ShopEquipIconSprite_03
+        .addr   ShopEquipIconSprite4
         .byte   $08
-        .addr   ShopEquipIconSprite_02
+        .addr   ShopEquipIconSprite3
         .byte   $08
-        .addr   ShopEquipIconSprite_02
+        .addr   ShopEquipIconSprite3
         .byte   $ff
 
 ; down arrow (worse)
-ShopEquipIconAnim_02:
-@ebe5:  .addr   ShopEquipIconSprite_07
+ShopEquipIconAnim3:
+@ebe5:  .addr   ShopEquipIconSprite8
         .byte   $08
-        .addr   ShopEquipIconSprite_06
+        .addr   ShopEquipIconSprite7
         .byte   $08
-        .addr   ShopEquipIconSprite_05
+        .addr   ShopEquipIconSprite6
         .byte   $08
-        .addr   ShopEquipIconSprite_05
+        .addr   ShopEquipIconSprite6
         .byte   $ff
 
 ; equals sign (same)
-ShopEquipIconAnim_03:
-@ebf1:  .addr   ShopEquipIconSprite_01
+ShopEquipIconAnim4:
+@ebf1:  .addr   ShopEquipIconSprite2
         .byte   $08
-        .addr   ShopEquipIconSprite_01
+        .addr   ShopEquipIconSprite2
         .byte   $08
-        .addr   ShopEquipIconSprite_01
+        .addr   ShopEquipIconSprite2
         .byte   $08
-        .addr   ShopEquipIconSprite_01
+        .addr   ShopEquipIconSprite2
         .byte   $ff
 
-ShopEquipIconSprite_00:
+ShopEquipIconSprite1:
 @ebfd:  .byte   1
         .byte   $00,$00,$07,$3e
 
-ShopEquipIconSprite_01:
+ShopEquipIconSprite2:
 @ec02:  .byte   1
         .byte   $00,$00,$0f,$3e
 
-ShopEquipIconSprite_02:
+ShopEquipIconSprite3:
 @ec07:  .byte   1
         .byte   $00,$00,$0c,$3e
 
-ShopEquipIconSprite_03:
+ShopEquipIconSprite4:
 @ec0c:  .byte   1
         .byte   $00,$00,$0d,$3e
 
-ShopEquipIconSprite_04:
+ShopEquipIconSprite5:
 @ec11:  .byte   1
         .byte   $00,$00,$0e,$3e
 
-ShopEquipIconSprite_05:
+ShopEquipIconSprite6:
 @ec16:  .byte   1
         .byte   $00,$00,$0c,$be
 
-ShopEquipIconSprite_06:
+ShopEquipIconSprite7:
 @ec1b:  .byte   1
         .byte   $00,$00,$0d,$be
 
-ShopEquipIconSprite_07:
+ShopEquipIconSprite8:
 @ec20:  .byte   1
         .byte   $00,$00,$0e,$be
 
@@ -757,155 +761,157 @@ ColosseumVSSprite:
 ; ------------------------------------------------------------------------------
 
 ; double-headed coin animation data (Edgar's ending scene)
-@ec93:  .addr   @ed71
+EdgarCoinAnim:
+@ec93:  .addr   EdgarCoinSprite1
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ee22
+        .addr   EdgarCoinSprite6
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ed71
+        .addr   EdgarCoinSprite1
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ee22
+        .addr   EdgarCoinSprite6
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ed71
+        .addr   EdgarCoinSprite1
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ee22
+        .addr   EdgarCoinSprite6
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ed71
+        .addr   EdgarCoinSprite1
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ee22
+        .addr   EdgarCoinSprite6
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ed71
+        .addr   EdgarCoinSprite1
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ee22
+        .addr   EdgarCoinSprite6
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ed71
+        .addr   EdgarCoinSprite1
         .byte   $b4
-        .addr   @ed71
+        .addr   EdgarCoinSprite1
         .byte   $b4
-        .addr   @ed71
+        .addr   EdgarCoinSprite1
         .byte   $46
-        .addr   @ed71
+        .addr   EdgarCoinSprite1
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ee22
+        .addr   EdgarCoinSprite6
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ed71
+        .addr   EdgarCoinSprite1
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ee22
+        .addr   EdgarCoinSprite6
         .byte   $04
-        .addr   @ed96
+        .addr   EdgarCoinSprite2
         .byte   $04
-        .addr   @edbb
+        .addr   EdgarCoinSprite3
         .byte   $04
-        .addr   @ede0
+        .addr   EdgarCoinSprite4
         .byte   $04
-        .addr   @ee05
+        .addr   EdgarCoinSprite5
         .byte   $04
-        .addr   @ee22
+        .addr   EdgarCoinSprite6
         .byte   $fe
 
+EdgarCoinSprite1:
 @ed71:  .byte   9
         .byte   $01,$00,$0c,$38
         .byte   $09,$00,$0d,$38
@@ -917,6 +923,7 @@ ColosseumVSSprite:
         .byte   $09,$10,$13,$38
         .byte   $11,$10,$14,$38
 
+EdgarCoinSprite2:
 @ed96:  .byte   9
         .byte   $00,$00,$15,$38
         .byte   $08,$00,$16,$38
@@ -928,6 +935,7 @@ ColosseumVSSprite:
         .byte   $08,$10,$1c,$38
         .byte   $10,$10,$1d,$38
 
+EdgarCoinSprite3:
 @edbb:  .byte   9
         .byte   $02,$00,$1e,$38
         .byte   $0a,$00,$1f,$38
@@ -939,6 +947,7 @@ ColosseumVSSprite:
         .byte   $09,$10,$25,$38
         .byte   $11,$10,$26,$38
 
+EdgarCoinSprite4:
 @ede0:  .byte   9
         .byte   $05,$00,$27,$38
         .byte   $0d,$00,$28,$38
@@ -950,6 +959,7 @@ ColosseumVSSprite:
         .byte   $09,$10,$2e,$38
         .byte   $11,$10,$2f,$38
 
+EdgarCoinSprite5:
 @ee05:  .byte   7
         .byte   $05,$00,$30,$38
         .byte   $0d,$00,$31,$38
@@ -959,6 +969,7 @@ ColosseumVSSprite:
         .byte   $09,$10,$35,$38
         .byte   $11,$10,$36,$38
 
+EdgarCoinSprite6:
 @ee22:  .byte   9
         .byte   $01,$00,$37,$38
         .byte   $09,$00,$38,$38
